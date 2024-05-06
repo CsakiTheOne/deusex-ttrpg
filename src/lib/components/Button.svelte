@@ -12,8 +12,8 @@
 
 <style>
     button {
-        background-color: #000000ee;
-        color: white;
+        background-color: var(--color-panel-background);
+        color: var(--color-on-panel-background);
         padding: 0.6rem 0.7rem;
         border: none;
         cursor: pointer;
@@ -24,15 +24,15 @@
     button:disabled,
     button:disabled:hover,
     button:disabled:active {
-        background-color: #000000ee;
-        color: white;
+        background-color: var(--color-panel-background);
+        color: var(--color-on-panel-background);
         opacity: 0.5;
         cursor: not-allowed;
     }
 
     button:hover {
-        background-color: #ffffffdd;
-        color: black;
+        background-color: var(--color-panel-background-light);
+        color: var(--color-on-panel-background-light);
     }
 
     button::before {

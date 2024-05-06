@@ -3,6 +3,16 @@
     src: url('./DentonBETA2.ttf');
 }
 
+:root {
+    --color-primary: #c4a46f;
+    --color-on-primary: #000000;
+    --color-panel-background: #000000ee;
+    --color-on-panel-background: #ffffff;
+    --color-panel-background-light: #ffffffdd;
+    --color-on-panel-background-light: #000000;
+    --color-outline: #ffffff88;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +22,8 @@
 
 body {
     background-color: #121212;
+    width: 100vw;
+    height: 100dvh;
 }
 
 h1, h2, h3, .font-title {

@@ -1,11 +1,11 @@
 <script>
-    import Button from "./Button.svelte";
     import OutlinedButton from "./OutlinedButton.svelte";
     import Panel from "./Panel.svelte";
     import Stack from "./Stack.svelte";
 
     export let src = "";
 
+    /** @type {HTMLAudioElement} */
     let audioRef;
     let volume = 0.3;
 
@@ -19,18 +19,43 @@
     }
 </script>
 
-<audio {src} bind:this={audioRef} bind:volume={volume}></audio>
+<audio {src} bind:this={audioRef} bind:volume></audio>
 
 <Panel>
     <Stack direction="row" alignCross="center">
-        <span>🎶</span>
+        <span>Music</span>
         <OutlinedButton on:click={playPause}>
             {#if audioRef && audioRef.paused}
-            Play
+                Play
             {:else}
-            Stop
+                Stop
             {/if}
         </OutlinedButton>
-        <input type="range" bind:value={volume} min="0" max="1" step=".1">
+        <input type="range" bind:value={volume} min="0" max="1" step=".05" />
     </Stack>
 </Panel>
+
+<style>
+    input[type="range"] {
+        appearance: none;
+        background-color: transparent;
+        border-bottom: dotted 2px var(--color-outline);
+        height: 0px;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        appearance: none;
+        width: 10px;
+        height: 10px;
+        background: white;
+        transform: rotateZ(45deg);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        appearance: none;
+        width: 10px;
+        height: 10px;
+        background: white;
+        transform: rotateZ(45deg);
+    }
+</style>

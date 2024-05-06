@@ -5,8 +5,11 @@
     import Panel from "$lib/components/Panel.svelte";
     import Stack from "$lib/components/Stack.svelte";
     import musicMenu from "$lib/media/music/1-01 Main Menu Theme.mp3";
+    import { menuBackground, setBackgrounImage } from "$lib/media/mediaRefs";
 
     let isLoggedIn = false;
+
+    setBackgrounImage(menuBackground);
 </script>
 
 <Panel light>
@@ -21,7 +24,7 @@
             <Button>Start Game</Button>
             <Button>Host Game</Button>
             <Button>Profile and Characters</Button>
-            <Button on:click={() => window.location.href = "./srd/"}>
+            <Button on:click={() => (window.location.href = "./srd/")}>
                 Open the System Reference Document
             </Button>
             <Button
@@ -32,7 +35,7 @@
             </Button>
             <Button on:click={() => (isLoggedIn = false)}>Log Out</Button>
         {:else}
-            <Button on:click={() => window.location.href = "./srd/"}>
+            <Button on:click={() => (window.location.href = "./srd/")}>
                 Open the System Reference Document
             </Button>
             <Button
@@ -51,8 +54,20 @@
             <Panel outline>
                 <iframe
                     width="480"
-                    style="aspect-ratio: 16 / 9;"
-                    src="https://www.youtube.com/embed/Sh_65yx-sc8?si=_8ypiYGVAGfnJkXw"
+                    style="aspect-ratio: 16 / 9; display: block;"
+                    src="https://www.youtube.com/embed/UG_oThcYsn0?si=Qv77F0MRcCSYSBAU"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                ></iframe>
+            </Panel>
+            <Panel outline>
+                <iframe
+                    width="480"
+                    style="aspect-ratio: 16 / 9; display: block;"
+                    src="https://www.youtube.com/embed/IG56zvBVX98?si=HQPe3yRs3LtHuNLc"
                     title="YouTube video player"
                     frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -61,7 +76,9 @@
                 ></iframe>
             </Panel>
             <div style="display: flex; justify-content: flex-end; width: 100%;">
-                <OutlinedButton on:click={() => window.location.href = "./srd/"}>
+                <OutlinedButton
+                    on:click={() => (window.location.href = "./srd/")}
+                >
                     Read More About the World
                 </OutlinedButton>
             </div>
