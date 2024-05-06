@@ -8,7 +8,8 @@ My attempt of creating a tabletop role playing game based on the Deus Ex univers
 
 - [ ] Finish the SRD
 - [ ] Create a website for the game
-  - [ ] Create SvelteKit and Firebase project
+  - [x] Create SvelteKit project
+  - [ ] Create Firebase project
   - [ ] Create custom Deus Ex UI library
   - [ ] Pages
     - [ ] Home
