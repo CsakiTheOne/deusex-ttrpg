@@ -9,20 +9,34 @@
     let srdPath = getContext("srdPath");
 </script>
 
-<a
-    href={href.startsWith("http") ? href : `#${href}`}
-    on:click={() => {
-        if (href.startsWith("http") || href.startsWith("#")) return;
-        srdPath.set(href.split("#")[0].replace("..", "."));
-    }}
-    target={href.startsWith("http") ? "_blank" : "_self"}
->
-    {text}
-</a>
+{#if href.startsWith("http")}
+    <a {href} target={href.startsWith("http") ? "_blank" : "_self"}>
+        {text}
+    </a>
+{:else}
+    <span
+        on:click={() => {
+            if (href.startsWith("#")) return;
+            srdPath.set(href.split("#")[0].replace("..", "."));
+        }}
+        on:keydown={(event) => {
+            if (event.key === "Enter") {
+                if (href.startsWith("#")) return;
+                srdPath.set(href.split("#")[0].replace("..", "."));
+            }
+        }}
+        role="button"
+        tabindex="0"
+    >
+        {text}
+    </span>
+{/if}
 
 <style>
-    a {
+    a,
+    span {
         color: var(--color-primary);
         text-decoration: none;
+        cursor: pointer;
     }
 </style>

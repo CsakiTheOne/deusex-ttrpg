@@ -16,8 +16,6 @@
     </Stack>
 </Panel>
 
-<SrdRenderer />
+<OutlinedButton on:click={() => goto("../")}>Back to Menu</OutlinedButton>
 
-<AlignRight>
-    <OutlinedButton on:click={() => goto("../")}>Back</OutlinedButton>
-</AlignRight>
+<SrdRenderer />

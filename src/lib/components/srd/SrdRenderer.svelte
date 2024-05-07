@@ -1,5 +1,5 @@
 <script>
-    import { onMount, setContext } from "svelte";
+    import { createEventDispatcher, onMount, setContext } from "svelte";
     import SvelteMarkdown from "svelte-markdown";
     import Stack from "../Stack.svelte";
     import Panel from "../Panel.svelte";
@@ -8,6 +8,9 @@
     import { browser } from "$app/environment";
     import { parseActionCodeURL } from "firebase/auth";
     import OutlinedButton from "../OutlinedButton.svelte";
+
+    export let style = "";
+    export let showCloseButton = false;
 
     let path = "SRD.md";
     /** @type {string | null} */
@@ -24,8 +27,7 @@
                 });
         }
     });
-
-    console.log(`Loading SRD page from ./srd/${path}`);
+    setContext("srdPath", srdPath);
 
     onMount(async () => {
         fetch(`../srd-content/${path}`)
@@ -35,21 +37,28 @@
             });
     });
 
-    setContext("srdPath", srdPath);
+    const dispatch = createEventDispatcher();
 </script>
 
-<Panel style="width: 100%;">
+<Panel style="overflow-y: scroll; {style}">
     <Panel light style="width: 100%;">
-        <Stack direction="row" alignCross="center">
-            {#each path.split("/") as pathSection}
-                {#if pathSection === "."}
-                    <OutlinedButton on:click={() => srdPath.set("SRD.md")}>
-                        Back to Root
-                    </OutlinedButton>
-                {:else}
-                    <span>{pathSection.replace(".md", "")}</span>
-                {/if}
-            {/each}
+        <Stack direction="row" alignMain="space-between" alignCross="center" style="width: 100%;">
+            <Stack direction="row" alignCross="center" padding="">
+                {#each path.split("/") as pathSection}
+                    {#if pathSection === "."}
+                        <OutlinedButton on:click={() => srdPath.set("SRD.md")}>
+                            Back to Root
+                        </OutlinedButton>
+                    {:else}
+                        <span>{pathSection.replace(".md", "")}</span>
+                    {/if}
+                {/each}
+            </Stack>
+            {#if showCloseButton}
+                <OutlinedButton on:click={() => dispatch("close")}>
+                    Close
+                </OutlinedButton>
+            {/if}
         </Stack>
     </Panel>
     <Stack>

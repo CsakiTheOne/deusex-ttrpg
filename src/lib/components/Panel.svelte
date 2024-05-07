@@ -21,7 +21,7 @@
         display: inline-block;
         background-color: var(--color-panel-background);
         color: var(--color-on-panel-background);
-        border-radius: 0.2rem;
+        border-radius: 0.1rem;
         animation: backgroundScroll 90s linear infinite;
     }
 

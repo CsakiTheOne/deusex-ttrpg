@@ -11,12 +11,15 @@
     import AlignRight from "$lib/components/AlignRight.svelte";
     import { goto } from "$app/navigation";
     import { getUserData, setUserData } from "$lib/firebase/firestore";
+    import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
     /** @type {import("$lib/firebase/firestore").UserData | null} */
     let currentUserData = null;
+
     let isCharactersPanelOpen = false;
+    let isSrdOpen = false;
 
     onMount(() => {
         auth.onAuthStateChanged((user) => {
@@ -94,7 +97,7 @@
                 </Panel>
             {/if}
         {/if}
-        <Button on:click={() => goto("./srd")}>
+        <Button on:click={() => isSrdOpen = true}>
             Open the System Reference Document
         </Button>
         <Button
@@ -145,10 +148,14 @@
                 ></iframe>
             </Panel>
             <AlignRight>
-                <OutlinedButton on:click={() => goto("./srd")}>
+                <OutlinedButton on:click={() => isSrdOpen = true}>
                     Read More About the World
                 </OutlinedButton>
             </AlignRight>
         </Stack>
     </Panel>
 </Stack>
+
+<dialog open={isSrdOpen}>
+    <SrdRenderer showCloseButton on:close={() => isSrdOpen = false} style="position: fixed; width: 100%; height: 100%; top: 0; left: 0;" />
+</dialog>
