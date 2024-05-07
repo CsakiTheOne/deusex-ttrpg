@@ -17,7 +17,7 @@
         auth.onAuthStateChanged((user) => {
             currentUser = user;
         });
-    })
+    });
 
     setBackgrounImage(menuBackground);
 </script>
@@ -31,43 +31,31 @@
 <Stack direction="row" alignMain="space-between" style="width: 100%;">
     <Stack>
         {#if currentUser}
-            <Button>Start Game</Button>
-            <Button>Host Game</Button>
-            <Button>Profile and Characters</Button>
-            <Button on:click={() => (window.location.href = "./srd/")}>
-                Open the System Reference Document
-            </Button>
-            <Button
-                on:click={() =>
-                    window.open("https://github.com/CsakiTheOne/deusex-ttrpg")}
-            >
-                GitHub
-            </Button>
-            <Button
-                on:click={() => {
-                    signOut();
-                }}
-            >
-                Sign Out
-            </Button>
-        {:else}
-            <Button on:click={() => (window.location.href = "./srd/")}>
-                Open the System Reference Document
-            </Button>
-            <Button
-                on:click={() =>
-                    window.open("https://github.com/CsakiTheOne/deusex-ttrpg")}
-            >
-                GitHub
-            </Button>
-            <Button
-                on:click={() => {
-                    signInWithGoogle();
-                }}
-            >
-                Sign In with Google
-            </Button>
+            <Button disabled>Start Game</Button>
+            <Button disabled>Host Game</Button>
+            <Button disabled>Profile and Characters</Button>
         {/if}
+        <Button on:click={() => (window.location.href = "./srd/")}>
+            Open the System Reference Document
+        </Button>
+        <Button
+            on:click={() =>
+                window.open("https://github.com/CsakiTheOne/deusex-ttrpg")}
+        >
+            GitHub
+        </Button>
+        <Button
+            on:click={() => {
+                if (currentUser) signOut();
+                else signInWithGoogle();
+            }}
+        >
+            {#if currentUser}
+                Sign Out
+            {:else}
+                Sign In with Google
+            {/if}
+        </Button>
         <Music src={musicMenu} />
     </Stack>
     <Panel>

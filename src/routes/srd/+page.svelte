@@ -4,6 +4,7 @@
     import Panel from "$lib/components/Panel.svelte";
     import Stack from "$lib/components/Stack.svelte";
     import { setBackgrounImage, menuBackground } from "$lib/media/mediaRefs";
+    import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
 
     setBackgrounImage(menuBackground);
 </script>
@@ -14,10 +15,7 @@
     </Stack>
 </Panel>
 
-<Panel>
-    <Stack>
-    </Stack>
-</Panel>
+<SrdRenderer />
 
 <AlignRight>
     <OutlinedButton on:click={() => location.href = '../'}>Back</OutlinedButton>
