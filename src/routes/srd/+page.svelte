@@ -5,6 +5,7 @@
     import Stack from "$lib/components/Stack.svelte";
     import { setBackgrounImage, menuBackground } from "$lib/media/mediaRefs";
     import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
+    import { goto } from "$app/navigation";
 
     setBackgrounImage(menuBackground);
 </script>
@@ -18,5 +19,5 @@
 <SrdRenderer />
 
 <AlignRight>
-    <OutlinedButton on:click={() => location.href = '../'}>Back</OutlinedButton>
+    <OutlinedButton on:click={() => goto("../")}>Back</OutlinedButton>
 </AlignRight>

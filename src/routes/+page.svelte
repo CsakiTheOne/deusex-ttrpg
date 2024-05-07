@@ -9,6 +9,7 @@
     import { auth, signInWithGoogle, signOut } from "$lib/firebase/auth";
     import { onMount } from "svelte";
     import AlignRight from "$lib/components/AlignRight.svelte";
+    import { goto } from "$app/navigation";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
@@ -35,7 +36,7 @@
             <Button disabled>Host Game</Button>
             <Button disabled>Profile and Characters</Button>
         {/if}
-        <Button on:click={() => (window.location.href = "./srd/")}>
+        <Button on:click={() => goto("./srd")}>
             Open the System Reference Document
         </Button>
         <Button
@@ -87,7 +88,7 @@
             </Panel>
             <AlignRight>
                 <OutlinedButton
-                    on:click={() => (window.location.href = "./srd/")}
+                    on:click={() => goto("./srd")}
                 >
                     Read More About the World
                 </OutlinedButton>
