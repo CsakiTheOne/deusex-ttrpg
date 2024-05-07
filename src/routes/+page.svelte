@@ -10,13 +10,26 @@
     import { onMount } from "svelte";
     import AlignRight from "$lib/components/AlignRight.svelte";
     import { goto } from "$app/navigation";
+    import { getUserData, setUserData } from "$lib/firebase/firestore";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
+    /** @type {import("$lib/firebase/firestore").UserData | null} */
+    let currentUserData = null;
+    let isCharactersPanelOpen = false;
 
     onMount(() => {
         auth.onAuthStateChanged((user) => {
             currentUser = user;
+            if (user) {
+                getUserData(user.uid).then((data) => {
+                    if (data.exists()) {
+                        currentUserData = data.data();
+                    }
+                });
+            } else {
+                currentUserData = null;
+            }
         });
     });
 
@@ -32,9 +45,54 @@
 <Stack direction="row" alignMain="space-between" style="width: 100%;">
     <Stack>
         {#if currentUser}
+            <Stack direction="row" alignCross="center">
+                <h2
+                    style="color: var(--color-on-background);"
+                    class="font-normal"
+                >
+                    {#if currentUserData && currentUserData.username}
+                        Welcome back, {currentUserData?.username}!
+                    {:else}
+                        Welcome! Be sure to set a nickname.
+                    {/if}
+                </h2>
+                <OutlinedButton
+                    on:click={() => {
+                        const newName = prompt(
+                            "Enter your new username:",
+                            currentUserData?.username ?? "",
+                        );
+
+                        if (currentUser && newName) {
+                            setUserData(currentUser.uid, {
+                                username: newName,
+                            }).then(() =>
+                                getUserData(currentUser.uid).then(
+                                    (data) => (currentUserData = data.data()),
+                                ),
+                            );
+                        }
+                    }}
+                >
+                    Edit
+                </OutlinedButton>
+            </Stack>
             <Button disabled>Start Game</Button>
             <Button disabled>Host Game</Button>
-            <Button disabled>Profile and Characters</Button>
+            <Button
+                on:click={() =>
+                    (isCharactersPanelOpen = !isCharactersPanelOpen)}
+            >
+                Characters
+            </Button>
+            {#if isCharactersPanelOpen}
+                <Panel>
+                    <Stack>
+                        <h3>Characters</h3>
+                        <Button>+ New Character</Button>
+                    </Stack>
+                </Panel>
+            {/if}
         {/if}
         <Button on:click={() => goto("./srd")}>
             Open the System Reference Document
@@ -87,9 +145,7 @@
                 ></iframe>
             </Panel>
             <AlignRight>
-                <OutlinedButton
-                    on:click={() => goto("./srd")}
-                >
+                <OutlinedButton on:click={() => goto("./srd")}>
                     Read More About the World
                 </OutlinedButton>
             </AlignRight>

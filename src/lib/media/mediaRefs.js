@@ -1,7 +1,9 @@
 import { browser } from '$app/environment';
 import backgroundRoomBelltower from '$lib/media/backgrounds/room-belltower.jpg';
+import backgroundAbstractDark from '$lib/media/backgrounds/low-poly-black.jpg';
 
 export const menuBackground = backgroundRoomBelltower;
+export const panelBackground = backgroundAbstractDark;
 
 /**
  * @param {string} imageUrl
