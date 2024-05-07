@@ -6,8 +6,17 @@
     import Stack from "$lib/components/Stack.svelte";
     import musicMenu from "$lib/media/music/1-01 Main Menu Theme.mp3";
     import { menuBackground, setBackgrounImage } from "$lib/media/mediaRefs";
+    import { auth, signInWithGoogle, signOut } from "$lib/firebase/auth";
+    import { onMount } from "svelte";
 
-    let isLoggedIn = false;
+    /** @type {import("firebase/auth").User | null} */
+    let currentUser = null;
+
+    onMount(() => {
+        auth.onAuthStateChanged((user) => {
+            currentUser = user;
+        });
+    })
 
     setBackgrounImage(menuBackground);
 </script>
@@ -20,7 +29,7 @@
 
 <Stack direction="row" alignMain="space-between" style="width: 100%;">
     <Stack>
-        {#if isLoggedIn}
+        {#if currentUser}
             <Button>Start Game</Button>
             <Button>Host Game</Button>
             <Button>Profile and Characters</Button>
@@ -33,7 +42,13 @@
             >
                 GitHub
             </Button>
-            <Button on:click={() => (isLoggedIn = false)}>Log Out</Button>
+            <Button
+                on:click={() => {
+                    signOut();
+                }}
+            >
+                Sign Out
+            </Button>
         {:else}
             <Button on:click={() => (window.location.href = "./srd/")}>
                 Open the System Reference Document
@@ -44,7 +59,13 @@
             >
                 GitHub
             </Button>
-            <Button on:click={() => (isLoggedIn = true)}>Log In</Button>
+            <Button
+                on:click={() => {
+                    signInWithGoogle();
+                }}
+            >
+                Sign In with Google
+            </Button>
         {/if}
         <Music src={musicMenu} />
     </Stack>
