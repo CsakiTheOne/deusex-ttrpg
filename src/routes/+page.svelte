@@ -8,6 +8,7 @@
     import { menuBackground, setBackgrounImage } from "$lib/media/mediaRefs";
     import { auth, signInWithGoogle, signOut } from "$lib/firebase/auth";
     import { onMount } from "svelte";
+    import AlignRight from "$lib/components/AlignRight.svelte";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
@@ -96,13 +97,13 @@
                     allowfullscreen
                 ></iframe>
             </Panel>
-            <div style="display: flex; justify-content: flex-end; width: 100%;">
+            <AlignRight>
                 <OutlinedButton
                     on:click={() => (window.location.href = "./srd/")}
                 >
                     Read More About the World
                 </OutlinedButton>
-            </div>
+            </AlignRight>
         </Stack>
     </Panel>
 </Stack>
