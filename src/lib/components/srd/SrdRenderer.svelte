@@ -17,7 +17,7 @@
     srdPath.subscribe((value) => {
         path = value;
         if (browser) {
-            fetch(`./srd-content/${path}`)
+            fetch(`../srd-content/${path}`)
                 .then((response) => response.text())
                 .then((text) => {
                     markdown = text;
@@ -28,7 +28,7 @@
     console.log(`Loading SRD page from ./srd/${path}`);
 
     onMount(async () => {
-        fetch(`./srd-content/${path}`)
+        fetch(`../srd-content/${path}`)
             .then((response) => response.text())
             .then((text) => {
                 markdown = text;
