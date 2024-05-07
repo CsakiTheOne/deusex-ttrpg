@@ -19,12 +19,17 @@ My attempt of creating a tabletop role playing game based on the Deus Ex univers
     - [ ] SRD viewer
     - [ ] Character sheet
 
-## Inspirations
+## Inspirations and sources
 
 This TTRPG is based on the *whole* Deus Ex universe, but relies mostly on...
 
 - [Deus Ex: Human Revolution (2011)](https://youtu.be/Kq5KWLqUewc?si=Gmi-jZdtWIQv7RGN)
 - [Deus Ex: Mankind Divided (2016)](https://youtu.be/uvSs5b6y-YM?si=91DU6FnGlyj43Knt)
+
+Sources:
+
+- [Music](https://downloads.khinsider.com/game-soundtracks/album/deus-ex-mankind-divided-extended-edition)
+- [User interface](https://interfaceingame.com/games/deus-ex-mankind-divided/)
 
 Other inspirations:
 
