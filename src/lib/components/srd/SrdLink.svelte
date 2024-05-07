@@ -13,7 +13,7 @@
     href={href.startsWith("http") ? href : `#${href}`}
     on:click={() => {
         if (href.startsWith("http") || href.startsWith("#")) return;
-        srdPath.set(href.split("#")[0]);
+        srdPath.set(href.split("#")[0].replace("..", "."));
     }}
     target={href.startsWith("http") ? "_blank" : "_self"}
 >
