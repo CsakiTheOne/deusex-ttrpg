@@ -34,7 +34,7 @@ The human body needs time and experience to get used to the cybernetics. The uni
 | Name                        | Activation | Power usage   | Required augs |
 | :-------------------------- | :--------- | ------------- | :------------ |
 | Retinal HUD                 | Manual     | -             |               |
-| Infolink                    | Always-on  | -             | Retinal HUD   |
+| Infolink                    | Always-on  | -             |               |
 | Cochlear Implant            | Automatic  | -             | Infolink      |
 | Subvocalization             | Automatic  | -             | Infolink      |
 | Sentinel RX Health System   | Always-on  | -             |               |
