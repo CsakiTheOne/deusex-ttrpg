@@ -8,6 +8,9 @@
     import { browser } from "$app/environment";
     import { parseActionCodeURL } from "firebase/auth";
     import OutlinedButton from "../OutlinedButton.svelte";
+    import SrdTable from "./table/SrdTable.svelte";
+    import SrdTableRow from "./table/SrdTableRow.svelte";
+    import SrdTableCell from "./table/SrdTableCell.svelte";
 
     export let style = "";
     export let showCloseButton = false;
@@ -42,7 +45,12 @@
 
 <Panel style="overflow-y: scroll; {style}">
     <Panel light style="width: 100%;">
-        <Stack direction="row" alignMain="space-between" alignCross="center" style="width: 100%;">
+        <Stack
+            direction="row"
+            alignMain="space-between"
+            alignCross="center"
+            style="width: 100%;"
+        >
             <Stack direction="row" alignCross="center" padding="">
                 {#each path.split("/") as pathSection}
                     {#if pathSection === "."}
@@ -62,6 +70,14 @@
         </Stack>
     </Panel>
     <Stack>
-        <SvelteMarkdown source={markdown} renderers={{ link: SrdLink }} />
+        <SvelteMarkdown
+            source={markdown}
+            renderers={{
+                link: SrdLink,
+                table: SrdTable,
+                tablerow: SrdTableRow,
+                tablecell: SrdTableCell,
+            }}
+        />
     </Stack>
 </Panel>
