@@ -92,7 +92,7 @@
                 <Panel>
                     <Stack>
                         <h3>Characters</h3>
-                        <Button>+ New Character</Button>
+                        <OutlinedButton>+ New Character</OutlinedButton>
                     </Stack>
                 </Panel>
             {/if}
