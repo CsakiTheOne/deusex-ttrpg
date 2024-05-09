@@ -12,6 +12,7 @@
     import { goto } from "$app/navigation";
     import { getUserData, setUserData } from "$lib/firebase/firestore";
     import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
+    import AugTile from "$lib/components/AugTile.svelte";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
@@ -39,6 +40,7 @@
     setBackgrounImage(menuBackground);
 </script>
 
+<!-- Header -->
 <Panel light>
     <Stack padding=".5rem">
         <h1 style="display: inline;">Deus Ex: The Tabletop Game</h1>
@@ -97,7 +99,7 @@
                 </Panel>
             {/if}
         {/if}
-        <Button on:click={() => isSrdOpen = true}>
+        <Button on:click={() => (isSrdOpen = true)}>
             Open the System Reference Document
         </Button>
         <Button
@@ -148,7 +150,7 @@
                 ></iframe>
             </Panel>
             <AlignRight>
-                <OutlinedButton on:click={() => isSrdOpen = true}>
+                <OutlinedButton on:click={() => (isSrdOpen = true)}>
                     Read More About the World
                 </OutlinedButton>
             </AlignRight>
@@ -156,6 +158,15 @@
     </Panel>
 </Stack>
 
+<AugTile augName="Infolink" state="disabled" />
+<AugTile augName="Infolink" state="inactive" />
+<AugTile augName="Infolink" state="partially-active" />
+<AugTile augName="Infolink" state="fully-active" />
+
 <dialog open={isSrdOpen}>
-    <SrdRenderer showCloseButton on:close={() => isSrdOpen = false} style="position: fixed; width: 100%; height: 100%; top: 0; left: 0;" />
+    <SrdRenderer
+        showCloseButton
+        on:close={() => (isSrdOpen = false)}
+        style="position: fixed; width: 100%; height: 100%; top: 0; left: 0;"
+    />
 </dialog>
