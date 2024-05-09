@@ -14,6 +14,7 @@
     import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
     import AugTile from "$lib/components/AugTile.svelte";
     import { iconInfolink } from "$lib/media/aug-icons/augIcons";
+    import AugRegistry from "$lib/components/AugRegistry.svelte";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
@@ -159,10 +160,9 @@
     </Panel>
 </Stack>
 
-<AugTile augName="Infolink" augIcon={iconInfolink} state="disabled" />
-<AugTile augName="Infolink" augIcon={iconInfolink} state="inactive" />
-<AugTile augName="Infolink" augIcon={iconInfolink} state="partially-active" />
-<AugTile augName="Infolink" augIcon={iconInfolink} state="fully-active" />
+<Panel>
+    <AugRegistry />
+</Panel>
 
 <dialog open={isSrdOpen}>
     <SrdRenderer

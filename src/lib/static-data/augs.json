@@ -91,6 +91,19 @@
         "costPerTurn": 0
     },
     {
+        "name": "Hacking Capture",
+        "iconPath": "Icon_Hacking_Capture.png",
+        "description": "Allows you to hack devices.",
+        "level": "civilian",
+        "bodyPart": "cranium",
+        "praxis": 2,
+        "activation": "contextual",
+        "dependencies": [],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
         "name": "Camera Domination",
         "iconPath": "Icon_Camera_Domination.png",
         "description": "Allows you to view and control cameras.",

@@ -1,15 +1,14 @@
 <script>
+    import { iconInfolink } from "$lib/media/aug-icons/augIcons";
     import { createEventDispatcher } from "svelte";
-    import augs from "$lib/static-data/augs.json";
 
     export let style = "";
-    export let augName;
-    export let augIcon;
+    /** @type {import("$lib/model/Aug").default} */
+    export let aug;
     /** @type {"disabled" | "inactive" | "partially-active" | "fully-active"} */
     export let state = "inactive";
 
     const dispatch = createEventDispatcher();
-    const aug = augs.find((a) => a.name === augName);
 
     let iconSrc = "";
     $: stateColor = {
@@ -21,7 +20,7 @@
 </script>
 
 <button on:click={() => dispatch("click")} style="background-color: {stateColor} {style}">
-    <img src={augIcon} alt="..." />
+    <img src={iconInfolink} alt="..." />
 </button>
 
 <style>

@@ -31,8 +31,7 @@ li {
 
 body {
     background-color: #121212;
-    width: 100vw;
-    height: 100dvh;
+    overflow-x: hidden;
 }
 
 h1, .font-title {

@@ -1,5 +1,4 @@
 /** @type {Aug[]} */
-import augs from "$lib/static-data/augs.json";
 
 /**
  * Sources:
@@ -39,4 +38,5 @@ export default class Aug {
     }
 }
 
-export { augs };
+export const augLevels = ["built-in", "civilian", "vip-medical", "military", "experimental"];
+export const augBodyParts = ["cranium", "eyes", "torso", "arms", "back", "skin", "legs"];
