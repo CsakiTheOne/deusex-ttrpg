@@ -4,6 +4,7 @@
 
     export let style = "";
     export let augName;
+    export let augIcon;
     /** @type {"disabled" | "inactive" | "partially-active" | "fully-active"} */
     export let state = "inactive";
 
@@ -17,18 +18,10 @@
         "partially-active": "#221100",
         "fully-active": "#002200",
     }[state];
-
-    if (aug) {
-        import(/* @vite-ignore */ `../media/aug-icons/${aug.iconPath}`).then(
-            (module) => {
-                iconSrc = module.default;
-            },
-        );
-    }
 </script>
 
 <button on:click={() => dispatch("click")} style="background-color: {stateColor} {style}">
-    <img src={iconSrc} alt="..." />
+    <img src={augIcon} alt="..." />
 </button>
 
 <style>

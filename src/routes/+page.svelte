@@ -13,6 +13,7 @@
     import { getUserData, setUserData } from "$lib/firebase/firestore";
     import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
     import AugTile from "$lib/components/AugTile.svelte";
+    import { iconInfolink } from "$lib/media/aug-icons/augIcons";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
@@ -72,7 +73,7 @@
                             setUserData(currentUser.uid, {
                                 username: newName,
                             }).then(() =>
-                                getUserData(currentUser.uid).then(
+                                getUserData(currentUser?.uid).then(
                                     (data) => (currentUserData = data.data()),
                                 ),
                             );
@@ -158,10 +159,10 @@
     </Panel>
 </Stack>
 
-<AugTile augName="Infolink" state="disabled" />
-<AugTile augName="Infolink" state="inactive" />
-<AugTile augName="Infolink" state="partially-active" />
-<AugTile augName="Infolink" state="fully-active" />
+<AugTile augName="Infolink" augIcon={iconInfolink} state="disabled" />
+<AugTile augName="Infolink" augIcon={iconInfolink} state="inactive" />
+<AugTile augName="Infolink" augIcon={iconInfolink} state="partially-active" />
+<AugTile augName="Infolink" augIcon={iconInfolink} state="fully-active" />
 
 <dialog open={isSrdOpen}>
     <SrdRenderer

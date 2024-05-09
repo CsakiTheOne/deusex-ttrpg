@@ -9,7 +9,7 @@ import { firebaseApp } from "./firebase";
 const db = getFirestore(firebaseApp);
 
 /**
- * @param {string} userId
+ * @param {string | undefined} userId
  */
 export function getUserData(userId) {
     return getDoc(doc(db, `users/${userId}`));
