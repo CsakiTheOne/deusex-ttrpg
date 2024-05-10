@@ -184,7 +184,7 @@
                 "unit": "+"
             },
             {
-                "stat": "toxicGasImmunity",
+                "stat": "toxicGasResistance",
                 "value": 20,
                 "unit": "+"
             }
@@ -323,7 +323,7 @@
     {
         "name": "Instant Takedown",
         "iconPath": "Icon_Instant_Takedown.png",
-        "description": "Allows you to perform an instant takedown.",
+        "description": "Allows you to perform an instant takedown outside of combat.",
         "level": "civilian",
         "bodyPart": "arms",
         "praxis": 2,
