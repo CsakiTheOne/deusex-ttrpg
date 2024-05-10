@@ -85,7 +85,7 @@
         "bodyPart": "torso",
         "praxis": 2,
         "activation": "always-on",
-        "dependencies": [],
+        "dependencies": ["Factory Default Biocells"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -104,6 +104,32 @@
         "costPerTurn": 0
     },
     {
+        "name": "Hacking Fortify",
+        "iconPath": "Icon_Hacking_Fortify.png",
+        "description": "Have better defense against anti-virus software.",
+        "level": "civilian",
+        "bodyPart": "cranium",
+        "praxis": 1,
+        "activation": "automatic",
+        "dependencies": ["Hacking Capture"],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Hacking Stealth",
+        "iconPath": "Icon_Hacking_Stealth.png",
+        "description": "Have better stealth against anti-virus software.",
+        "level": "civilian",
+        "bodyPart": "cranium",
+        "praxis": 1,
+        "activation": "automatic",
+        "dependencies": ["Hacking Capture"],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
         "name": "Camera Domination",
         "iconPath": "Icon_Camera_Domination.png",
         "description": "Allows you to view and control cameras.",
@@ -114,6 +140,19 @@
         "dependencies": ["Hacking Capture"],
         "costOnActivation": 0,
         "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Implanted Rebreather",
+        "iconPath": "Icon_Implanted_Rebreather.png",
+        "description": "Gives poison resistance and toxic gas immunity.",
+        "level": "civilian",
+        "bodyPart": "torso",
+        "praxis": 2,
+        "activation": "automatic",
+        "dependencies": [],
+        "costOnActivation": 0,
+        "costPerMove": 1,
         "costPerTurn": 0
     }
 ]

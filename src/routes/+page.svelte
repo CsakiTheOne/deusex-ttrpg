@@ -9,11 +9,8 @@
     import { auth, signInWithGoogle, signOut } from "$lib/firebase/auth";
     import { onMount } from "svelte";
     import AlignRight from "$lib/components/AlignRight.svelte";
-    import { goto } from "$app/navigation";
     import { getUserData, setUserData } from "$lib/firebase/firestore";
     import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
-    import AugTile from "$lib/components/AugTile.svelte";
-    import { iconInfolink } from "$lib/media/aug-icons/augIcons";
     import AugRegistry from "$lib/components/AugRegistry.svelte";
 
     /** @type {import("firebase/auth").User | null} */
@@ -40,6 +37,11 @@
     });
 
     setBackgrounImage(menuBackground);
+
+    // TESTING
+    let praxis = 10;
+    let unlockedAugs = [];
+    let disabledAugs = [];
 </script>
 
 <!-- Header -->
@@ -160,8 +162,27 @@
     </Panel>
 </Stack>
 
-<Panel>
-    <AugRegistry />
+<Panel style="width: 100%;">
+    <AugRegistry
+        allowInteractions
+        {praxis}
+        {unlockedAugs}
+        {disabledAugs}
+        on:unlock={e => {
+            if (praxis >= e.detail.praxis) {
+                praxis -= e.detail.praxis;
+                unlockedAugs = [...unlockedAugs, e.detail.name];
+            }
+        }}
+        on:toggle={e => {
+            if (disabledAugs.includes(e.detail.name)) {
+                disabledAugs = disabledAugs.filter((name) => name !== e.detail.name);
+            } else {
+                disabledAugs = [...disabledAugs, e.detail.name];
+            }
+        }}
+        on:use={e => alert(e.detail.name + " used")}
+    />
 </Panel>
 
 <dialog open={isSrdOpen}>

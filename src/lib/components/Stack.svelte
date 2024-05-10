@@ -17,6 +17,6 @@
 <style>
     div {
         display: inline-flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 </style>

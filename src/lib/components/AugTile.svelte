@@ -1,5 +1,5 @@
 <script>
-    import { iconInfolink } from "$lib/media/aug-icons/augIcons";
+    import { getAugIcon } from "$lib/media/mediaRefs";
     import { createEventDispatcher } from "svelte";
 
     export let style = "";
@@ -10,17 +10,22 @@
 
     const dispatch = createEventDispatcher();
 
-    let iconSrc = "";
     $: stateColor = {
         disabled: "#220000",
-        inactive: "#121212",
+        inactive: "#080808",
         "partially-active": "#221100",
         "fully-active": "#002200",
     }[state];
 </script>
 
-<button on:click={() => dispatch("click")} style="background-color: {stateColor} {style}">
-    <img src={iconInfolink} alt="..." />
+<button
+    on:click={() => dispatch("click")}
+    style="background-color: {stateColor} {style}"
+>
+    {#await getAugIcon(aug) then src}
+        <img {src} alt="..." />
+    {/await}
+    <span>{aug.name}</span>
 </button>
 
 <style>
@@ -36,14 +41,29 @@
     button > img {
         width: 100%;
         height: 100%;
+        padding: 4px;
+    }
+
+    button:active {
+        background-color: var(--color-panel-background);
+        color: var(--color-on-panel-background);
     }
 
     img:hover {
         background-color: var(--color-outline);
     }
 
-    button:active {
+    span {
+        display: none;
+    }
+
+    button:hover span {
+        display: block;
+        position: absolute;
         background-color: var(--color-panel-background);
         color: var(--color-on-panel-background);
+        padding: 4px;
+        border: 1px solid var(--color-outline);
+        border-radius: 2px;
     }
 </style>
