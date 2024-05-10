@@ -7,7 +7,7 @@
         "bodyPart": "eyes",
         "praxis": 0,
         "activation": "manual",
-        "dependencies": [],
+        "children": ["Wayfinder Radar System", "Stealth Avatar"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -20,7 +20,7 @@
         "bodyPart": "cranium",
         "praxis": 0,
         "activation": "automatic",
-        "dependencies": [],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -33,7 +33,7 @@
         "bodyPart": "torso",
         "praxis": 0,
         "activation": "always-on",
-        "dependencies": [],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -46,7 +46,7 @@
         "bodyPart": "arms",
         "praxis": 0,
         "activation": "always-on",
-        "dependencies": [],
+        "children": ["Punch Through Wall"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -59,7 +59,7 @@
         "bodyPart": "legs",
         "praxis": 0,
         "activation": "always-on",
-        "dependencies": [],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -72,7 +72,7 @@
         "bodyPart": "torso",
         "praxis": 0,
         "activation": "always-on",
-        "dependencies": [],
+        "children": ["Sarif Series 8 Energy Converter"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -85,7 +85,7 @@
         "bodyPart": "torso",
         "praxis": 2,
         "activation": "always-on",
-        "dependencies": ["Factory Default Biocells"],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -98,7 +98,7 @@
         "bodyPart": "cranium",
         "praxis": 2,
         "activation": "contextual",
-        "dependencies": [],
+        "children": ["Hacking Fortify", "Hacking Stealth", "Camera Domination"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -111,7 +111,7 @@
         "bodyPart": "cranium",
         "praxis": 1,
         "activation": "automatic",
-        "dependencies": ["Hacking Capture"],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -124,7 +124,7 @@
         "bodyPart": "cranium",
         "praxis": 1,
         "activation": "automatic",
-        "dependencies": ["Hacking Capture"],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -137,7 +137,7 @@
         "bodyPart": "cranium",
         "praxis": 1,
         "activation": "automatic",
-        "dependencies": ["Hacking Capture"],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0
@@ -150,9 +150,113 @@
         "bodyPart": "torso",
         "praxis": 2,
         "activation": "automatic",
-        "dependencies": [],
+        "children": [],
         "costOnActivation": 0,
         "costPerMove": 1,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Social Enhancer",
+        "iconPath": "Icon_Social_Enhancer.png",
+        "description": "Analyze prople's personalities, emotions and intentions.",
+        "level": "civilian",
+        "bodyPart": "cranium",
+        "praxis": 2,
+        "activation": "automatic",
+        "children": [],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Smart Vision",
+        "iconPath": "Icon_Smart_Vision.png",
+        "description": "Highlights objects and people in your surroundings. Improves your perception.",
+        "level": "civilian",
+        "bodyPart": "eyes",
+        "praxis": 2,
+        "activation": "manual",
+        "children": [],
+        "costOnActivation": 1,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Stealth Avatar",
+        "iconPath": "Icon_Stealth_Avatar.png",
+        "description": "Know where your enemies think you are.",
+        "level": "civilian",
+        "bodyPart": "cranium",
+        "praxis": 2,
+        "activation": "automatic",
+        "children": [],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Wayfinder Radar System",
+        "iconPath": "Icon_Wayfinder_Radar_System.png",
+        "description": "Displays a radar in your HUD.",
+        "level": "civilian",
+        "bodyPart": "eyes",
+        "praxis": 2,
+        "activation": "always-on",
+        "children": ["Topographics", "Vision Feedback"],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Topographics",
+        "iconPath": "Icon_Topographics.png",
+        "description": "Shows the layout of the area you are in.",
+        "level": "civilian",
+        "bodyPart": "eyes",
+        "praxis": 1,
+        "activation": "always-on",
+        "children": [],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Vision Feedback",
+        "iconPath": "Icon_Vision_Feedback.png",
+        "description": "Shows you where people, robots, turets and cameras are looking at.",
+        "level": "civilian",
+        "bodyPart": "eyes",
+        "praxis": 1,
+        "activation": "always-on",
+        "children": [],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Icarus Landing",
+        "iconPath": "Icon_Icarus_Landing.png",
+        "description": "Fall from any height without taking damage. Also allows you to perform an area takedown from above.",
+        "level": "civilian",
+        "bodyPart": "torso",
+        "praxis": 2,
+        "activation": "automatic",
+        "children": [],
+        "costOnActivation": 0,
+        "costPerMove": 0,
+        "costPerTurn": 0
+    },
+    {
+        "name": "Punch Through Wall",
+        "iconPath": "Icon_Punch_Through_Wall.png",
+        "description": "Allows you to punch through weak walls.",
+        "level": "civilian",
+        "bodyPart": "arms",
+        "praxis": 2,
+        "activation": "contextual",
+        "children": [],
+        "costOnActivation": 1,
+        "costPerMove": 0,
         "costPerTurn": 0
     }
 ]

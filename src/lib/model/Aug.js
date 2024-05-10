@@ -19,7 +19,7 @@ export default class Aug {
         /** @type {"always-on" | "contextual" | "automatic" | "manual"} */
         activation = "always-on",
         /** @type {string[]} */
-        dependencies = [],
+        children = [],
         costOnActivation = 0,
         costPerMove = 0,
         costPerTurn = 0,
@@ -31,7 +31,7 @@ export default class Aug {
         this.bodyPart = bodyPart;
         this.praxis = praxis;
         this.activation = activation;
-        this.dependencies = dependencies;
+        this.children = children;
         this.costOnActivation = costOnActivation;
         this.costPerMove = costPerMove;
         this.costPerTurn = costPerTurn;

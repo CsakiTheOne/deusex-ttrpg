@@ -9,44 +9,24 @@
     import Stack from "./Stack.svelte";
 
     export let allowInteractions = false;
-    export let praxis = 0;
-    export let unlockedAugs = [];
-    export let disabledAugs = [];
+    /** @type {import("$lib/model/Character").default | null} */
+    export let character = null;
 
     const dispatch = createEventDispatcher();
 
-    // Base augs are augs that have no dependencies
-    const baseAugs = augs.filter((aug) => aug.dependencies.length === 0);
+    // Base augs are augs that have no parent
+    const baseAugs = augs.filter((aug) => augs.every((other) => !other.children.includes(aug.name)));
 
     let sorting = "level";
     /** @type {import("$lib/model/Aug").default | null} */
     let selectedAug = null;
-    let augStates = [];
-
-    $: {
-        augStates = augs.map((aug) => {
-            if (disabledAugs.includes(aug.name)) return "disabled";
-            if (unlockedAugs.includes(aug.name)) {
-                const dependants = augs.filter((dependent) =>
-                    dependent.dependencies.includes(aug.name),
-                );
-                if (dependants.length === 0) return "fully-active";
-                const allDependantsActive = dependants.every((dependent) =>
-                    unlockedAugs.includes(dependent.name)
-                );
-                if (allDependantsActive) return "fully-active";
-                return "partially-active";
-            }
-            return "inactive";
-        });
-    }
 </script>
 
 <Stack direction="row" style="width: 100%;">
     <Stack style="width: 50%;">
-        {#if allowInteractions}
+        {#if allowInteractions && character}
             <Stack direction="row" alignCross="center" padding="0">
-                <span>Praxis: {praxis}</span>
+                <span>Praxis: {character?.praxis}</span>
                 <span>System stability: ?%</span>
             </Stack>
         {/if}
@@ -75,7 +55,6 @@
                         {#each baseAugs.filter((aug) => aug.level === level) as aug}
                             <AugTile
                                 {aug}
-                                state={augStates[augs.indexOf(aug)]}
                                 on:click={() => (selectedAug = aug)}
                             />
                         {/each}
@@ -88,7 +67,6 @@
                         {#each baseAugs.filter((aug) => aug.bodyPart === bodyPart) as aug}
                             <AugTile
                                 {aug}
-                                state={augStates[augs.indexOf(aug)]}
                                 on:click={() => (selectedAug = aug)}
                             />
                         {/each}
@@ -124,22 +102,21 @@
                     >
                         <AugTile
                             aug={selectedAug}
-                            state={augStates[augs.indexOf(selectedAug)]}
                         />
-                        {#if allowInteractions && !unlockedAugs.includes(selectedAug.name)}
+                        {#if allowInteractions && !character.augs.includes(selectedAug.name)}
                             <OutlinedButton
                                 on:click={() => dispatch("unlock", selectedAug)}
                             >
                                 Unlock for {selectedAug.praxis} praxis
                             </OutlinedButton>
                         {/if}
-                        {#if allowInteractions && unlockedAugs.includes(selectedAug.name)}
+                        {#if allowInteractions && character.augs.includes(selectedAug.name)}
                             <OutlinedButton
                                 on:click={() => dispatch("use", selectedAug)}
                                 >Use</OutlinedButton
                             >
                         {/if}
-                        {#if allowInteractions && unlockedAugs.includes(selectedAug.name)}
+                        {#if allowInteractions && character.augs.includes(selectedAug.name)}
                             <OutlinedButton
                                 on:click={() => dispatch("toggle", selectedAug)}
                             >
@@ -152,14 +129,11 @@
                         alignMain="space-evenly"
                         style="width: 100%;"
                     >
-                        {#each augs as dependent}
-                            {#if dependent.dependencies.includes(selectedAug.name)}
-                                <AugTile
-                                    aug={dependent}
-                                    on:click={() => (selectedAug = dependent)}
-                                    state={augStates[augs.indexOf(dependent)]}
-                                />
-                            {/if}
+                        {#each selectedAug.children as childName}
+                            <AugTile
+                                aug={augs.find((aug) => aug.name === childName)}
+                                on:click={() => (selectedAug = augs.find((aug) => aug.name === childName))}
+                            />
                         {/each}
                     </Stack>
                 </Stack>

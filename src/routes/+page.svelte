@@ -163,26 +163,7 @@
 </Stack>
 
 <Panel style="width: 100%;">
-    <AugRegistry
-        allowInteractions
-        {praxis}
-        {unlockedAugs}
-        {disabledAugs}
-        on:unlock={e => {
-            if (praxis >= e.detail.praxis) {
-                praxis -= e.detail.praxis;
-                unlockedAugs = [...unlockedAugs, e.detail.name];
-            }
-        }}
-        on:toggle={e => {
-            if (disabledAugs.includes(e.detail.name)) {
-                disabledAugs = disabledAugs.filter((name) => name !== e.detail.name);
-            } else {
-                disabledAugs = [...disabledAugs, e.detail.name];
-            }
-        }}
-        on:use={e => alert(e.detail.name + " used")}
-    />
+    <AugRegistry />
 </Panel>
 
 <dialog open={isSrdOpen}>
