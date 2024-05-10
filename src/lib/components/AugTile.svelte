@@ -5,7 +5,7 @@
     export let style = "";
     /** @type {import("$lib/model/Aug").default} */
     export let aug;
-    /** @type {"disabled" | "inactive" | "partially-active" | "fully-active"} */
+    /** @type {"disabled" | "inactive" | "partial" | "full"} */
     export let state = "inactive";
 
     const dispatch = createEventDispatcher();
@@ -13,8 +13,8 @@
     $: stateColor = {
         disabled: "#220000",
         inactive: "#080808",
-        "partially-active": "#221100",
-        "fully-active": "#002200",
+        partial: "#111100",
+        full: "#002200",
     }[state];
 </script>
 
@@ -32,7 +32,7 @@
     button {
         display: inline-block;
         color: var(--color-on-panel-background);
-        width: 64px;
+        width: 72px;
         aspect-ratio: 1 / 1;
         border: none;
         cursor: pointer;

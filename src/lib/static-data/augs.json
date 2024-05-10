@@ -10,7 +10,8 @@
         "children": ["Wayfinder Radar System", "Stealth Avatar"],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Infolink",
@@ -23,7 +24,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Sentinel RX Health System",
@@ -36,7 +38,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Cybernetic Arm Prosthesis",
@@ -49,7 +52,8 @@
         "children": ["Punch Through Wall"],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Cybernetic Leg Prosthesis",
@@ -62,7 +66,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Factory Default Biocells",
@@ -75,7 +80,8 @@
         "children": ["Sarif Series 8 Energy Converter"],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Sarif Series 8 Energy Converter",
@@ -88,7 +94,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Hacking Capture",
@@ -101,7 +108,8 @@
         "children": ["Hacking Fortify", "Hacking Stealth", "Camera Domination"],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Hacking Fortify",
@@ -114,7 +122,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Hacking Stealth",
@@ -127,7 +136,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Camera Domination",
@@ -140,7 +150,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Implanted Rebreather",
@@ -153,7 +164,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 1,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Social Enhancer",
@@ -166,7 +178,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Smart Vision",
@@ -179,7 +192,8 @@
         "children": [],
         "costOnActivation": 1,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Stealth Avatar",
@@ -192,7 +206,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Wayfinder Radar System",
@@ -205,7 +220,8 @@
         "children": ["Topographics", "Vision Feedback"],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Topographics",
@@ -218,7 +234,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Vision Feedback",
@@ -231,7 +248,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Icarus Landing",
@@ -244,7 +262,8 @@
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     },
     {
         "name": "Punch Through Wall",
@@ -257,6 +276,7 @@
         "children": [],
         "costOnActivation": 1,
         "costPerMove": 0,
-        "costPerTurn": 0
+        "costPerTurn": 0,
+        "bonuses": []
     }
 ]

@@ -7,6 +7,7 @@
     import OutlinedButton from "./OutlinedButton.svelte";
     import Panel from "./Panel.svelte";
     import Stack from "./Stack.svelte";
+    import AugTree from "./AugTree.svelte";
 
     export let allowInteractions = false;
     /** @type {import("$lib/model/Character").default | null} */
@@ -15,15 +16,17 @@
     const dispatch = createEventDispatcher();
 
     // Base augs are augs that have no parent
-    const baseAugs = augs.filter((aug) => augs.every((other) => !other.children.includes(aug.name)));
+    const baseAugs = augs.filter((aug) =>
+        augs.every((other) => !other.children.includes(aug.name)),
+    );
 
     let sorting = "level";
     /** @type {import("$lib/model/Aug").default | null} */
     let selectedAug = null;
 </script>
 
-<Stack direction="row" style="width: 100%;">
-    <Stack style="width: 50%;">
+<Stack direction="row" alignMain="space-between" style="width: 100%;">
+    <Stack>
         {#if allowInteractions && character}
             <Stack direction="row" alignCross="center" padding="0">
                 <span>Praxis: {character?.praxis}</span>
@@ -76,7 +79,7 @@
         </Stack>
     </Stack>
     {#if selectedAug}
-        <Panel outline style="width: 50%;">
+        <Panel outline>
             <Stack style="width: 100%;">
                 <h3>{selectedAug.name}</h3>
                 <p>{selectedAug.description}</p>
@@ -93,49 +96,30 @@
                         >{selectedAug.costPerTurn}/t</abbr
                     >
                 </p>
+                <Stack direction="row">
+                    {#if allowInteractions && character && !character.augs.includes(selectedAug.name)}
+                        <OutlinedButton
+                            on:click={() => dispatch("unlock", selectedAug)}
+                        >
+                            Unlock for {selectedAug.praxis} praxis
+                        </OutlinedButton>
+                    {/if}
+                    {#if allowInteractions && character && character.augs.includes(selectedAug.name)}
+                        <OutlinedButton
+                            on:click={() => dispatch("use", selectedAug)}
+                            >Use</OutlinedButton
+                        >
+                    {/if}
+                    {#if allowInteractions && character && character.augs.includes(selectedAug.name)}
+                        <OutlinedButton
+                            on:click={() => dispatch("toggle", selectedAug)}
+                        >
+                            Toggle Activation
+                        </OutlinedButton>
+                    {/if}
+                </Stack>
                 <Stack alignCross="center" style="width: 100%;">
-                    <Stack
-                        direction="row"
-                        alignMain="center"
-                        alignCross="center"
-                        style="width: 100%;"
-                    >
-                        <AugTile
-                            aug={selectedAug}
-                        />
-                        {#if allowInteractions && !character.augs.includes(selectedAug.name)}
-                            <OutlinedButton
-                                on:click={() => dispatch("unlock", selectedAug)}
-                            >
-                                Unlock for {selectedAug.praxis} praxis
-                            </OutlinedButton>
-                        {/if}
-                        {#if allowInteractions && character.augs.includes(selectedAug.name)}
-                            <OutlinedButton
-                                on:click={() => dispatch("use", selectedAug)}
-                                >Use</OutlinedButton
-                            >
-                        {/if}
-                        {#if allowInteractions && character.augs.includes(selectedAug.name)}
-                            <OutlinedButton
-                                on:click={() => dispatch("toggle", selectedAug)}
-                            >
-                                Toggle Activation
-                            </OutlinedButton>
-                        {/if}
-                    </Stack>
-                    <Stack
-                        direction="row"
-                        alignMain="space-evenly"
-                        style="width: 100%;"
-                    >
-                        {#each selectedAug.children as childName}
-                            <AugTile
-                                aug={augs.find((aug) => aug.name === childName)}
-                                on:click={() => (selectedAug = augs.find((aug) => aug.name === childName))}
-                            />
-                        {/each}
-                    </Stack>
+                    <AugTree aug={selectedAug} on:click={e => selectedAug = e.detail} />
                 </Stack>
             </Stack>
         </Panel>
@@ -149,7 +133,7 @@
         justify-content: center;
         text-transform: uppercase;
         width: 20px;
-        height: 64px;
+        height: 72px;
         background-color: var(--color-panel-background-light);
         color: var(--color-on-panel-background-light);
         text-align: center;
@@ -157,7 +141,7 @@
     }
 
     .row-title span {
-        font-size: 0.6rem;
+        font-size: 0.55rem;
         font-weight: bold;
         rotate: -90deg;
     }

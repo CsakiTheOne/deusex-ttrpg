@@ -23,6 +23,8 @@ export default class Aug {
         costOnActivation = 0,
         costPerMove = 0,
         costPerTurn = 0,
+        /** @type {import('./AugBonus').default[]} */
+        bonuses = [],
     ) {
         this.name = name;
         this.iconPath = iconPath;
@@ -35,6 +37,7 @@ export default class Aug {
         this.costOnActivation = costOnActivation;
         this.costPerMove = costPerMove;
         this.costPerTurn = costPerTurn;
+        this.bonuses = bonuses;
     }
 }
 
