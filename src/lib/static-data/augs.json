@@ -39,7 +39,13 @@
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "constitution",
+                "value": 1,
+                "unit": "+"
+            }
+        ]
     },
     {
         "name": "Cybernetic Arm Prosthesis",
@@ -53,7 +59,13 @@
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "strength",
+                "value": 1,
+                "unit": "+"
+            }
+        ]
     },
     {
         "name": "Cybernetic Leg Prosthesis",
@@ -165,7 +177,18 @@
         "costOnActivation": 0,
         "costPerMove": 1,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "poisonResistance",
+                "value": 2,
+                "unit": "+"
+            },
+            {
+                "stat": "toxicGasImmunity",
+                "value": 20,
+                "unit": "+"
+            }
+        ]
     },
     {
         "name": "Social Enhancer",
@@ -179,7 +202,13 @@
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "charisma",
+                "value": 1,
+                "unit": "+"
+            }
+        ]
     },
     {
         "name": "Smart Vision",
@@ -193,7 +222,13 @@
         "costOnActivation": 1,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "perception",
+                "value": 2,
+                "unit": "+"
+            }
+        ]
     },
     {
         "name": "Stealth Avatar",
@@ -207,7 +242,13 @@
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "stealth",
+                "value": 1,
+                "unit": "+"
+            }
+        ]
     },
     {
         "name": "Wayfinder Radar System",
@@ -275,6 +316,20 @@
         "activation": "contextual",
         "children": [],
         "costOnActivation": 1,
+        "costPerMove": 0,
+        "costPerTurn": 0,
+        "bonuses": []
+    },
+    {
+        "name": "Instant Takedown",
+        "iconPath": "Icon_Instant_Takedown.png",
+        "description": "Allows you to perform an instant takedown.",
+        "level": "civilian",
+        "bodyPart": "arms",
+        "praxis": 2,
+        "activation": "contextual",
+        "children": [],
+        "costOnActivation": 5,
         "costPerMove": 0,
         "costPerTurn": 0,
         "bonuses": []

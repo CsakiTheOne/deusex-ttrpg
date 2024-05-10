@@ -34,6 +34,8 @@ export default class Character {
         stats = {
             armorClass: 0,
             speed: 0,
+            poisionResistance: 0,
+            toxicGasResistance: 0,
         },
         /** @type {{[key: string]: number}} */
         inventory = {},
@@ -45,6 +47,8 @@ export default class Character {
         augs = [],
         /** @type {string[]} */
         disabledAugs = [],
+        /** @type {string[]} */
+        notes = [],
         /** @type {string[]} */
         tags = [],
     ) {
@@ -61,6 +65,7 @@ export default class Character {
         this.augAccessLevel = augAccessLevel;
         this.augs = augs;
         this.disabledAugs = disabledAugs;
+        this.notes = notes;
         this.tags = tags;
     }
 }
