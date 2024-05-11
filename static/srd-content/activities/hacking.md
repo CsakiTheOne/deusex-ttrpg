@@ -58,4 +58,4 @@ To start remote hacking a device, you only have to roll once. All devices have a
 
 When you hack a device either normally or remotely, enemies can detect you in some cases. If you hack a device connected to a security terminal, an enemy looking at the terminal will reverse your hack in the enemy's next turn and enter an alert state. If you hack a speaker, light, television, door or anything which can be heard, nearby enemies will enter an alert state. Other hacks are not noticed by enemies.
 
-If you have turret and / or robot domination, you can turn them against enemies. Enemies don't notice the hack until the turret / robot attacks them. In this case the enemies will attack back until they destroy the turret / robot.
+If you have turret and / or robot domination, you can turn them against enemies. Enemies don't notice the hack until the turret / robot attacks them. In this case normal enemies will attack back until they destroy the turret / robot. Heavily augmented enemies can remote hack the turret / robot and turn them against you.

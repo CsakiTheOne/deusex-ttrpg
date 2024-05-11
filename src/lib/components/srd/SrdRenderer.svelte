@@ -11,6 +11,7 @@
     import SrdTable from "./table/SrdTable.svelte";
     import SrdTableRow from "./table/SrdTableRow.svelte";
     import SrdTableCell from "./table/SrdTableCell.svelte";
+    import SrdInlineCode from "./SrdInlineCode.svelte";
 
     export let style = "";
     export let showCloseButton = false;
@@ -77,6 +78,7 @@
                 table: SrdTable,
                 tablerow: SrdTableRow,
                 tablecell: SrdTableCell,
+                codespan: SrdInlineCode,
             }}
         />
     </Stack>
