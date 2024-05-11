@@ -3,37 +3,45 @@
         "name": "Retinal HUD",
         "iconPath": "Icon_Retinal_Hud.png",
         "description": "Displays information on your surroundings in augmented reality.",
-        "level": "built-in",
+        "augClass": "built-in",
         "bodyPart": "eyes",
+        "maxLevel": 1,
         "praxis": 0,
+        "upgradePraxis": 0,
         "activation": "manual",
         "children": ["Wayfinder Radar System", "Stealth Avatar"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Infolink",
         "iconPath": "Icon_Infolink.png",
         "description": "Allows you to communicate without a physical device.",
-        "level": "built-in",
+        "augClass": "built-in",
         "bodyPart": "cranium",
+        "maxLevel": 1,
         "praxis": 0,
+        "upgradePraxis": 0,
         "activation": "automatic",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Sentinel RX Health System",
         "iconPath": "Icon_Sentinel_Rx_Health_System.png",
         "description": "Automatically administers medical care out of intense situations.",
-        "level": "built-in",
+        "augClass": "built-in",
         "bodyPart": "torso",
+        "maxLevel": 3,
         "praxis": 0,
+        "upgradePraxis": 1,
         "activation": "always-on",
         "children": [],
         "costOnActivation": 0,
@@ -45,15 +53,18 @@
                 "value": 1,
                 "unit": "+"
             }
-        ]
+        ],
+        "tags": []
     },
     {
         "name": "Cybernetic Arm Prosthesis",
         "iconPath": "Icon_Cybernetic_Arm_Prosthesis.png",
         "description": "Enhances your strength and combat capabilities.",
-        "level": "built-in",
+        "augClass": "built-in",
         "bodyPart": "arms",
+        "maxLevel": 1,
         "praxis": 0,
+        "upgradePraxis": 0,
         "activation": "always-on",
         "children": ["Punch Through Wall"],
         "costOnActivation": 0,
@@ -65,113 +76,155 @@
                 "value": 1,
                 "unit": "+"
             }
-        ]
+        ],
+        "tags": []
     },
     {
         "name": "Cybernetic Leg Prosthesis",
         "iconPath": "Icon_Cybernetic_Leg_Prosthesis.png",
         "description": "Enhances your movement capabilities.",
-        "level": "built-in",
+        "augClass": "built-in",
         "bodyPart": "legs",
+        "maxLevel": 1,
         "praxis": 0,
+        "upgradePraxis": 0,
         "activation": "always-on",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Factory Default Biocells",
         "iconPath": "Icon_Sarif_Series_8_Energy_Converter.png",
         "description": "Your energy source for augmentations. Replenished by biocells. Also recharges while resting for a long time.",
-        "level": "built-in",
+        "augClass": "built-in",
         "bodyPart": "torso",
+        "maxLevel": 1,
         "praxis": 0,
+        "upgradePraxis": 0,
         "activation": "always-on",
         "children": ["Sarif Series 8 Energy Converter"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Sarif Series 8 Energy Converter",
         "iconPath": "Icon_Sarif_Series_8_Energy_Converter.png",
         "description": "A better energy source for augmentations. Replenished by biocells. Also recharges while resting for a short time and partially regenerates out of combat.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "torso",
+        "maxLevel": 3,
         "praxis": 2,
+        "upgradePraxis": 1,
         "activation": "always-on",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Hacking Capture",
         "iconPath": "Icon_Hacking_Capture.png",
         "description": "Allows you to hack devices.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "cranium",
+        "maxLevel": 5,
         "praxis": 2,
+        "upgradePraxis": 1,
         "activation": "contextual",
         "children": ["Hacking Fortify", "Hacking Stealth", "Camera Domination"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "hacking",
+                "value": 1,
+                "unit": "+"
+            }
+        ],
+        "tags": []
     },
     {
         "name": "Hacking Fortify",
         "iconPath": "Icon_Hacking_Fortify.png",
         "description": "Have better defense against anti-virus software.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "cranium",
+        "maxLevel": 5,
         "praxis": 1,
+        "upgradePraxis": 1,
         "activation": "automatic",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "hackingFortify",
+                "value": 2,
+                "unit": "+"
+            }
+        ],
+        "tags": []
     },
     {
         "name": "Hacking Stealth",
         "iconPath": "Icon_Hacking_Stealth.png",
         "description": "Have better stealth against anti-virus software.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "cranium",
+        "maxLevel": 5,
         "praxis": 1,
+        "upgradePraxis": 1,
         "activation": "automatic",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [
+            {
+                "stat": "hackingStealth",
+                "value": 2,
+                "unit": "+"
+            }
+        ],
+        "tags": []
     },
     {
         "name": "Camera Domination",
         "iconPath": "Icon_Camera_Domination.png",
         "description": "Allows you to view and control cameras.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "cranium",
+        "maxLevel": 1,
         "praxis": 1,
+        "upgradePraxis": 0,
         "activation": "automatic",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Implanted Rebreather",
         "iconPath": "Icon_Implanted_Rebreather.png",
         "description": "Gives poison resistance and toxic gas immunity.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "torso",
+        "maxLevel": 1,
         "praxis": 2,
+        "upgradePraxis": 0,
         "activation": "automatic",
         "children": [],
         "costOnActivation": 0,
@@ -188,15 +241,18 @@
                 "value": 20,
                 "unit": "+"
             }
-        ]
+        ],
+        "tags": []
     },
     {
         "name": "Social Enhancer",
         "iconPath": "Icon_Social_Enhancer.png",
         "description": "Analyze prople's personalities, emotions and intentions.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "cranium",
+        "maxLevel": 1,
         "praxis": 2,
+        "upgradePraxis": 0,
         "activation": "automatic",
         "children": [],
         "costOnActivation": 0,
@@ -208,15 +264,18 @@
                 "value": 1,
                 "unit": "+"
             }
-        ]
+        ],
+        "tags": []
     },
     {
         "name": "Smart Vision",
         "iconPath": "Icon_Smart_Vision.png",
         "description": "Highlights objects and people in your surroundings. Improves your perception.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "eyes",
+        "maxLevel": 1,
         "praxis": 2,
+        "upgradePraxis": 0,
         "activation": "manual",
         "children": [],
         "costOnActivation": 1,
@@ -228,15 +287,18 @@
                 "value": 2,
                 "unit": "+"
             }
-        ]
+        ],
+        "tags": []
     },
     {
         "name": "Stealth Avatar",
         "iconPath": "Icon_Stealth_Avatar.png",
         "description": "Know where your enemies think you are.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "cranium",
+        "maxLevel": 1,
         "praxis": 2,
+        "upgradePraxis": 0,
         "activation": "automatic",
         "children": [],
         "costOnActivation": 0,
@@ -248,90 +310,109 @@
                 "value": 1,
                 "unit": "+"
             }
-        ]
+        ],
+        "tags": []
     },
     {
         "name": "Wayfinder Radar System",
         "iconPath": "Icon_Wayfinder_Radar_System.png",
         "description": "Displays a radar in your HUD.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "eyes",
+        "maxLevel": 1,
         "praxis": 2,
+        "upgradePraxis": 0,
         "activation": "always-on",
         "children": ["Topographics", "Vision Feedback"],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Topographics",
         "iconPath": "Icon_Topographics.png",
         "description": "Shows the layout of the area you are in.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "eyes",
+        "maxLevel": 1,
         "praxis": 1,
+        "upgradePraxis": 0,
         "activation": "always-on",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Vision Feedback",
         "iconPath": "Icon_Vision_Feedback.png",
         "description": "Shows you where people, robots, turets and cameras are looking at.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "eyes",
+        "maxLevel": 1,
         "praxis": 1,
+        "upgradePraxis": 0,
         "activation": "always-on",
         "children": [],
         "costOnActivation": 0,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Icarus Landing",
         "iconPath": "Icon_Icarus_Landing.png",
         "description": "Fall from any height without taking damage. Also allows you to perform an area takedown from above.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "torso",
+        "maxLevel": 1,
         "praxis": 2,
+        "upgradePraxis": 0,
         "activation": "automatic",
         "children": [],
-        "costOnActivation": 0,
+        "costOnActivation": 5,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
     },
     {
         "name": "Punch Through Wall",
         "iconPath": "Icon_Punch_Through_Wall.png",
         "description": "Allows you to punch through weak walls.",
-        "level": "civilian",
+        "augClass": "civilian",
         "bodyPart": "arms",
+        "maxLevel": 1,
         "praxis": 2,
-        "activation": "contextual",
-        "children": [],
-        "costOnActivation": 1,
-        "costPerMove": 0,
-        "costPerTurn": 0,
-        "bonuses": []
-    },
-    {
-        "name": "Instant Takedown",
-        "iconPath": "Icon_Instant_Takedown.png",
-        "description": "Allows you to perform an instant takedown outside of combat.",
-        "level": "civilian",
-        "bodyPart": "arms",
-        "praxis": 2,
+        "upgradePraxis": 0,
         "activation": "contextual",
         "children": [],
         "costOnActivation": 5,
         "costPerMove": 0,
         "costPerTurn": 0,
-        "bonuses": []
+        "bonuses": [],
+        "tags": []
+    },
+    {
+        "name": "Instant Takedown",
+        "iconPath": "Icon_Instant_Takedown.png",
+        "description": "Allows you to perform an instant takedown outside of combat.",
+        "augClass": "civilian",
+        "bodyPart": "arms",
+        "maxLevel": 1,
+        "praxis": 2,
+        "upgradePraxis": 0,
+        "activation": "contextual",
+        "children": [],
+        "costOnActivation": 5,
+        "costPerMove": 0,
+        "costPerTurn": 0,
+        "bonuses": [],
+        "tags": []
     }
 ]

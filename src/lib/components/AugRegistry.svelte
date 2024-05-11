@@ -1,5 +1,5 @@
 <script>
-    import { augBodyParts, augLevels } from "$lib/model/Aug";
+    import { augBodyParts, augClasses } from "$lib/model/Aug";
     import augs from "$lib/static-data/augs.json";
     import { createEventDispatcher } from "svelte";
     import AugTile from "./AugTile.svelte";
@@ -20,7 +20,7 @@
         augs.every((other) => !other.children.includes(aug.name)),
     );
 
-    let sorting = "level";
+    let sorting = "aug-class";
     /** @type {import("$lib/model/Aug").default | null} */
     let selectedAug = null;
 </script>
@@ -36,11 +36,11 @@
         <Stack direction="row" alignCross="center" padding="0">
             <span>Sort by</span>
             <Checkbox
-                checked={sorting === "level"}
+                checked={sorting === "aug-class"}
                 on:change={(value) => {
-                    if (value) sorting = "level";
+                    if (value) sorting = "aug-class";
                 }}
-                label="Level"
+                label="Class"
             />
             <Checkbox
                 checked={sorting === "body-part"}
@@ -51,11 +51,11 @@
             />
         </Stack>
         <Stack gap="0" padding="0">
-            {#if sorting === "level"}
-                {#each augLevels as level}
+            {#if sorting === "aug-class"}
+                {#each augClasses as augClass}
                     <Stack direction="row" gap="0" padding="0">
-                        <div class="row-title"><span>{level}</span></div>
-                        {#each baseAugs.filter((aug) => aug.level === level) as aug}
+                        <div class="row-title"><span>{augClass}</span></div>
+                        {#each baseAugs.filter((aug) => aug.augClass === augClass) as aug}
                             <AugTile
                                 {aug}
                                 on:click={() => (selectedAug = aug)}
@@ -82,8 +82,7 @@
         <Panel outline>
             <Stack style="width: 100%;">
                 <h3>{selectedAug.name}</h3>
-                <p>{selectedAug.description}</p>
-                <p>Activation: {selectedAug.activation}</p>
+                <p>{selectedAug.description} Activation: {selectedAug.activation}.</p>
                 <p>
                     Power usage:
                     <abbr title="Cost per use"
@@ -96,6 +95,16 @@
                         >{selectedAug.costPerTurn}/t</abbr
                     >
                 </p>
+                {#if selectedAug.bonuses.length > 0}
+                    <div>
+                        Bonuses:
+                        <ul>
+                            {#each selectedAug.bonuses as bonus}
+                                <li>{bonus.stat} {bonus.unit} {bonus.value}</li>
+                            {/each}
+                        </ul>
+                    </div>
+                {/if}
                 <Stack direction="row">
                     {#if allowInteractions && character && !character.augs.includes(selectedAug.name)}
                         <OutlinedButton
@@ -119,7 +128,10 @@
                     {/if}
                 </Stack>
                 <Stack alignCross="center" style="width: 100%;">
-                    <AugTree aug={selectedAug} on:click={e => selectedAug = e.detail} />
+                    <AugTree
+                        aug={selectedAug}
+                        on:click={(e) => (selectedAug = e.detail)}
+                    />
                 </Stack>
             </Stack>
         </Panel>

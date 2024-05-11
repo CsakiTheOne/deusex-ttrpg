@@ -20,6 +20,7 @@ export default class Character {
         skills = {
             athletics: 0,
             deception: 0,
+            hacking: 0,
             history: 0,
             investigation: 0,
             medicine: 0,
@@ -34,8 +35,11 @@ export default class Character {
         stats = {
             armorClass: 0,
             speed: 0,
+            initiative: 0,
             poisionResistance: 0,
             toxicGasResistance: 0,
+            hackingFortify: 0,
+            hackingStealth: 0,
         },
         /** @type {{[key: string]: number}} */
         inventory = {},
@@ -45,6 +49,8 @@ export default class Character {
         augAccessLevel = "civilian",
         /** @type {string[]} */
         augs = [],
+        /** @type {{[key: string]: number}} */
+        augLevels = {},
         /** @type {string[]} */
         disabledAugs = [],
         /** @type {string[]} */
@@ -64,6 +70,7 @@ export default class Character {
         this.praxis = praxis;
         this.augAccessLevel = augAccessLevel;
         this.augs = augs;
+        this.augLevels = augLevels;
         this.disabledAugs = disabledAugs;
         this.notes = notes;
         this.tags = tags;
