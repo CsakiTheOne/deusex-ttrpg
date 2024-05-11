@@ -1,5 +1,5 @@
 <script>
-    import { augBodyParts, augClasses } from "$lib/model/Aug";
+    import { augBodyParts, augClasses, getAugState } from "$lib/model/Aug";
     import augs from "$lib/static-data/augs.json";
     import { createEventDispatcher } from "svelte";
     import AugTile from "./AugTile.svelte";
@@ -8,10 +8,11 @@
     import Panel from "./Panel.svelte";
     import Stack from "./Stack.svelte";
     import AugTree from "./AugTree.svelte";
+    import { baseCharacter } from "$lib/model/Character";
 
     export let allowInteractions = false;
-    /** @type {import("$lib/model/Character").default | null} */
-    export let character = null;
+    /** @type {import("$lib/model/Character").default} */
+    export let character = baseCharacter;
 
     const dispatch = createEventDispatcher();
 
@@ -25,7 +26,7 @@
     let selectedAug = null;
 </script>
 
-<Stack direction="row" alignMain="space-between" style="width: 100%;">
+<Stack direction="row" alignMain="space-evenly" style="width: 100%;">
     <Stack>
         {#if allowInteractions && character}
             <Stack direction="row" alignCross="center" padding="0">
@@ -58,6 +59,7 @@
                         {#each baseAugs.filter((aug) => aug.augClass === augClass) as aug}
                             <AugTile
                                 {aug}
+                                state={getAugState(character, aug)}
                                 on:click={() => (selectedAug = aug)}
                             />
                         {/each}
@@ -70,6 +72,7 @@
                         {#each baseAugs.filter((aug) => aug.bodyPart === bodyPart) as aug}
                             <AugTile
                                 {aug}
+                                state={getAugState(character, aug)}
                                 on:click={() => (selectedAug = aug)}
                             />
                         {/each}
@@ -78,11 +81,13 @@
             {/if}
         </Stack>
     </Stack>
-    {#if selectedAug}
-        <Panel outline>
+    <Panel outline style="width: 45%;">
+        {#if selectedAug}
             <Stack style="width: 100%;">
                 <h3>{selectedAug.name}</h3>
-                <p>{selectedAug.description} Activation: {selectedAug.activation}.</p>
+                <p>
+                    {selectedAug.description} Activation: {selectedAug.activation}.
+                </p>
                 <p>
                     Power usage:
                     <abbr title="Cost per use"
@@ -134,8 +139,8 @@
                     />
                 </Stack>
             </Stack>
-        </Panel>
-    {/if}
+        {/if}
+    </Panel>
 </Stack>
 
 <style>

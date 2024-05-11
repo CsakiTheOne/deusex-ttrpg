@@ -1,4 +1,4 @@
-/** @type {Aug[]} */
+import augs from "$lib/static-data/augs.json";
 
 /**
  * Sources:
@@ -50,3 +50,26 @@ export default class Aug {
 
 export const augClasses = ["built-in", "civilian", "vip-medical", "military", "experimental"];
 export const augBodyParts = ["cranium", "eyes", "torso", "arms", "back", "skin", "legs"];
+
+
+/**
+ * @param {import("$lib/model/Character").default} character
+ * @param {import("$lib/model/Aug").default} aug
+ */
+export function getAugState(character, aug) {
+    if (character.disabledAugs.includes(aug.name)) return "disabled";
+    if (character.augs.includes(aug.name)) {
+        /** @type {Array<import("$lib/model/Aug").default>} */
+        const children = aug.children.map((childName) =>
+            augs.find((aug) => aug.name === childName),
+        );
+        if (
+            aug.children.length < 1 ||
+            children.every((child) => getAugState(character, child) === "full")
+        ) {
+            return "full";
+        }
+        return "partial";
+    }
+    return "inactive";
+}

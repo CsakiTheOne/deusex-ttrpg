@@ -12,6 +12,7 @@
     import { getUserData, setUserData } from "$lib/firebase/firestore";
     import SrdRenderer from "$lib/components/srd/SrdRenderer.svelte";
     import AugRegistry from "$lib/components/AugRegistry.svelte";
+    import { baseCharacter } from "$lib/model/Character";
 
     /** @type {import("firebase/auth").User | null} */
     let currentUser = null;
@@ -39,9 +40,7 @@
     setBackgrounImage(menuBackground);
 
     // TESTING
-    let praxis = 10;
-    let unlockedAugs = [];
-    let disabledAugs = [];
+    let character = baseCharacter;
 </script>
 
 <!-- Header -->
@@ -163,7 +162,28 @@
 </Stack>
 
 <Panel style="width: 100%;">
-    <AugRegistry />
+    <AugRegistry
+        allowInteractions
+        {character}
+        on:toggle={(e) => {
+            if (character.disabledAugs.includes(e.detail.name))
+                character.disabledAugs = character.disabledAugs.filter(
+                    (name) => name !== e.detail.name,
+                );
+            else character.disabledAugs.push(e.detail.name);
+            character = character;
+        }}
+        on:unlock={(e) => {
+            if (character.praxis >= e.detail.praxis) {
+                character.praxis -= e.detail.praxis;
+                character.augs.push(e.detail.name);
+                character = character;
+            }
+        }}
+        on:use={(e) => {
+            alert("Used " + e.detail.name);
+        }}
+    />
 </Panel>
 
 <dialog open={isSrdOpen}>

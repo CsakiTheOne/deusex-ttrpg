@@ -13,7 +13,7 @@
     $: stateColor = {
         disabled: "#220000",
         inactive: "#080808",
-        partial: "#111100",
+        partial: "#222200",
         full: "#002200",
     }[state];
 </script>
