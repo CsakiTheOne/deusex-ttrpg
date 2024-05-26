@@ -39,3 +39,19 @@ Other inspirations:
   - [Can We Make Talking as Much Fun as Shooting?](https://youtu.be/l9TzqNQBmr0?si=D2wOjDx2FNY9W8zO)
   - [The Rise of the Systemic Game](https://youtu.be/SnpAAX9CkIc?si=-57B8E3DWWQiHAo0)
   - [The Power of Invisible Choices](https://youtu.be/6HZuSzlN2eI?si=F7iOPh0Je0d3zZGB)
+
+Pillars of DnD:
+
+- social
+- exploration
+- combat
+
+Bendi hozzászólásai:
+
+- Vampire: The Masquerade
+- Pathfinder
+- World of Darkness (Made: The Ascension)
+
+Sok dobálás helyett egyszerre.
+
+Dinamikus turn order.
